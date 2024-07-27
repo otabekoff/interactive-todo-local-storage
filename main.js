@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (taskText.length >= 4) {
             const taskItem = document.createElement('li');
             taskItem.className = 'task-item';
+            taskItem.dataset.editing = 'false';
             taskItem.innerHTML = `
                 <span class="task-text" contenteditable="false">${taskText}</span>
                 <div class="actions">
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             taskItem.addEventListener('click', (e) => {
-                if (!e.target.classList.contains('edit') && !e.target.classList.contains('delete')) {
+                if (taskItem.dataset.editing === 'false') {
                     taskItem.classList.toggle('done');
                     saveTasks();
                 }
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (newText.length >= 4) {
                 taskText.contentEditable = 'false';
                 button.textContent = '✎'; // Change back to edit icon
-                taskItem.removeEventListener('click', preventToggleWhileEditing);
+                taskItem.dataset.editing = 'false';
                 saveTasks();
             } else {
                 alert('Task must be at least 4 characters long.');
@@ -95,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             taskText.contentEditable = 'true';
             taskText.focus();
             button.textContent = '✔️'; // Change to checkmark icon
-            taskItem.addEventListener('click', preventToggleWhileEditing);
+            taskItem.dataset.editing = 'true';
 
             // Prevent new line in contenteditable span
             taskText.addEventListener('keypress', preventNewLine);
@@ -112,11 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') {
             e.preventDefault();
         }
-    }
-
-    // Prevent toggling while editing
-    function preventToggleWhileEditing(e) {
-        e.stopPropagation();
     }
 
     // Delete task function
@@ -146,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function addTaskFromLocal(task) {
         const taskItem = document.createElement('li');
         taskItem.className = 'task-item';
+        taskItem.dataset.editing = 'false';
         if (task.done) {
             taskItem.classList.add('done');
         }
@@ -157,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         taskItem.addEventListener('click', (e) => {
-            if (!e.target.classList.contains('edit') && !e.target.classList.contains('delete')) {
+            if (taskItem.dataset.editing === 'false') {
                 taskItem.classList.toggle('done');
                 saveTasks();
             }
