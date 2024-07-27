@@ -1,0 +1,179 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.3s;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+header button:hover {
+    color: #c0c0c0;
+}
+
+.todo-app {
+    padding: 2rem;
+}
+
+#new-task {
+    width: calc(100% - 120px);
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+#add-task {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#add-task:hover {
+    background-color: #0056b3;
+}
+
+#hint {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #007bff;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 1rem;
+}
+
+.task-item {
+    background-color: #2e2e2e;
+    padding: 0.75rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.task-item.done .task-text {
+    text-decoration: line-through;
+}
+
+.task-text {
+    display: block;
+    max-width: calc(100% - 70px);
+    overflow-x: hidden;
+    white-space: nowrap;
+    cursor: text;
+}
+
+.task-text[contenteditable="true"] {
+    border: 1px solid #007bff;
+    padding: 0.25rem;
+    border-radius: 4px;
+    outline: none;
+    background-color: #3a3a3a;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.actions button {
+    background: transparent;
+    border: none;
+    color: #e0e0e0;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.actions button:hover {
+    color: #ff6b6b;
+}
+
+.light-mode {
+    background-color: #f0f0f0;
+    color: #121212;
+}
+
+.light-mode .container {
+    background-color: #fff;
+}
+
+.light-mode header {
+    background-color: #0056b3;
+}
+
+.light-mode #new-task {
+    background-color: #fff;
+    color: #000;
+}
+
+.light-mode #add-task {
+    background-color: #0056b3;
+}
+
+.light-mode #add-task:hover {
+    background-color: #003d80;
+}
+
+.light-mode .task-item {
+    background-color: #e0e0e0;
+}
+
+.light-mode .task-item .task-text[contenteditable="true"] {
+    background-color: #fff;
+}
+
+.light-mode .actions button:hover {
+    color: #c00;
+}
